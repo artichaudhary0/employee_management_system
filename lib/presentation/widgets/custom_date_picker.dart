@@ -10,12 +10,14 @@ class CustomDatePicker extends StatefulWidget {
   final DateTime? initialDate;
   final Function(DateTime?) onDateSelected;
   final bool allowNull;
+  final DateTime? maxDate;
 
   const CustomDatePicker({
     super.key,
     this.initialDate,
     required this.onDateSelected,
     this.allowNull = false,
+    this.maxDate,
   });
 
   @override
@@ -62,6 +64,9 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
   }
 
   void _selectCalendarDate(DateTime date) {
+    if (widget.maxDate != null && date.isAfter(widget.maxDate!)) {
+      return;
+    }
     setState(() {
       selectedDate = date;
       selectedQuickOption = null;
@@ -288,7 +293,8 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
           date.month == today.month &&
           date.year == today.year;
 
-      days.add(_buildCalendarDay(day, date, isSelected, isToday));
+      final isDisabled = widget.maxDate != null && date.isAfter(widget.maxDate!);
+      days.add(_buildCalendarDay(day, date, isSelected, isToday, isDisabled));
     }
 
     return GridView.count(shrinkWrap: true, crossAxisCount: 7, children: days);
@@ -299,9 +305,10 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
     DateTime date,
     bool isSelected,
     bool isToday,
+    bool isDisabled,
   ) {
     return GestureDetector(
-      onTap: () => _selectCalendarDate(date),
+      onTap: isDisabled ? null : () => _selectCalendarDate(date),
       child: Container(
         margin: const EdgeInsets.all(2),
         decoration: BoxDecoration(
@@ -316,7 +323,11 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
           child: Text(
             day.toString(),
             style: AppTextStyles.inputText.copyWith(
-              color: isSelected ? AppColors.white : AppColors.text,
+              color: isDisabled 
+                  ? AppColors.hint.withOpacity(0.5)
+                  : isSelected 
+                      ? AppColors.white 
+                      : AppColors.text,
               fontWeight: isToday ? FontWeight.w600 : FontWeight.w400,
             ),
           ),

@@ -15,19 +15,12 @@ class SectionHeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: ResponsiveUtils.getResponsiveHeight(16)),
-      child: Row(
-        children: [
-          Text(
-            title,
-            style: AppTextStyles.sectionHeader,
-          ),
-          const Spacer(),
-          Text(
-            '($count)',
-            style: AppTextStyles.countText,
-          ),
-        ],
+      padding: EdgeInsets.all(ResponsiveUtils.getResponsiveHeight(16)),
+      child: Text(
+        title,
+        style: AppTextStyles.sectionHeader.copyWith(
+          fontWeight: FontWeight.w500,
+        ),
       ),
     );
   }

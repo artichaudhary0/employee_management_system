@@ -29,6 +29,7 @@ class _EmployeeListPageState extends State<EmployeeListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.scaffold,
       appBar: const CommonAppBar(title: AppConstants.appTitle),
       body: BlocConsumer<EmployeeBloc, EmployeeState>(
         listener: (context, state) {

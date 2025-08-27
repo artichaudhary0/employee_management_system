@@ -1,3 +1,4 @@
+import 'package:employee_management_system/core/constants/app_constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repositories/employee_repository.dart';
 import 'employee_event.dart';
@@ -58,7 +59,7 @@ class EmployeeBloc extends Bloc<EmployeeEvent, EmployeeState> {
   ) async {
     try {
       await _employeeRepository.deleteEmployee(event.employeeId);
-      emit(const EmployeeOperationSuccess('Employee deleted successfully'));
+      emit(const EmployeeOperationSuccess(AppConstants.employeeDeleted));
       add(LoadEmployees());
     } catch (e) {
       emit(EmployeeError('Failed to delete employee: ${e.toString()}'));

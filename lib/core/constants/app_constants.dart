@@ -27,6 +27,7 @@ class AppConstants {
   static const String addEmployeeDetails = 'Add Employee Details';
   static const String editEmployeeDetails = 'Edit Employee Details';
   static const String selectRole = 'Select role';
+  static const String employeeDeleted = 'Employee data has been deleted';
 
   // Asset Paths
   static const String noEmployeeImage = 'assets/images/no_employee.svg';

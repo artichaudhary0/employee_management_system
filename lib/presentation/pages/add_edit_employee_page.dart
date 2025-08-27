@@ -8,6 +8,7 @@ import '../widgets/custom_text_field.dart';
 import '../widgets/role_selector.dart';
 import '../widgets/date_selector.dart';
 import '../widgets/common_app_bar.dart';
+import '../widgets/custom_dialog.dart';
 import '../../core/constants/app_constants.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_text_styles.dart';
@@ -51,6 +52,24 @@ class _AddEditEmployeePageState extends State<AddEditEmployeePage> {
             _isEditing
                 ? AppConstants.editEmployeeDetails
                 : AppConstants.addEmployeeDetails,
+        actions:
+            _isEditing
+                ? [
+                  IconButton(
+                    onPressed: _showDeleteDialog,
+                    icon: Padding(
+                      padding: EdgeInsets.all(
+                        ResponsiveUtils.getResponsiveWidth(10),
+                      ),
+                      child: SvgPicture.asset(
+                        AppConstants.deleteIcon,
+                        width: ResponsiveUtils.getResponsiveWidth(24),
+                        height: ResponsiveUtils.getResponsiveHeight(24),
+                      ),
+                    ),
+                  ),
+                ]
+                : null,
       ),
       body: Form(
         key: _formKey,
@@ -201,6 +220,14 @@ class _AddEditEmployeePageState extends State<AddEditEmployeePage> {
         context.read<EmployeeBloc>().add(AddEmployee(employee));
       }
 
+      Navigator.pop(context);
+    }
+  }
+
+  void _showDeleteDialog() async {
+    final result = await CustomDialog.showDeleteDialog(context: context);
+    if (result == true) {
+      context.read<EmployeeBloc>().add(DeleteEmployee(widget.employee!.id!));
       Navigator.pop(context);
     }
   }

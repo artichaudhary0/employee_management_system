@@ -6,6 +6,7 @@ class DatePickerUtils {
     required BuildContext context,
     DateTime? initialDate,
     bool allowNull = false,
+    DateTime? maxDate,
   }) async {
     DateTime? selectedDate;
     
@@ -14,6 +15,7 @@ class DatePickerUtils {
       builder: (context) => CustomDatePicker(
         initialDate: initialDate,
         allowNull: allowNull,
+        maxDate: maxDate,
         onDateSelected: (date) {
           selectedDate = date;
         },

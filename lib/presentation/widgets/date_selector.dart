@@ -69,6 +69,7 @@ class DateSelector extends StatelessWidget {
       context: context,
       initialDate: selectedDate ?? DateTime.now(),
       allowNull: allowNull,
+      maxDate: allowNull ? DateTime.now() : null,
     );
 
     if (picked != null) {
