@@ -66,6 +66,10 @@ class RoleSelector extends StatelessWidget {
       context: context,
       backgroundColor: Colors.transparent,
       barrierColor: Colors.black54,
+      isScrollControlled: true,
+      constraints: const BoxConstraints(
+        maxWidth: double.infinity,
+      ),
       builder:
           (context) => RoleBottomSheet(
             selectedRole: selectedRole,

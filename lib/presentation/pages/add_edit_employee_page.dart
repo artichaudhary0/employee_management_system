@@ -131,10 +131,8 @@ class _AddEditEmployeePageState extends State<AddEditEmployeePage> {
               ),
             ),
             Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: ResponsiveUtils.getResponsiveWidth(16),
-                vertical: ResponsiveUtils.getResponsiveHeight(12),
-              ),
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               decoration: const BoxDecoration(
                 color: AppColors.white,
                 border: Border(top: BorderSide(color: AppColors.border)),

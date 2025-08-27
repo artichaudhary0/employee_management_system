@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter/foundation.dart';
 
 class ResponsiveUtils {
   static bool isMobile(BuildContext context) => 
@@ -23,14 +23,25 @@ class ResponsiveUtils {
   }
 
   static EdgeInsets getResponsivePadding(BuildContext context) {
-    if (isMobile(context)) return EdgeInsets.all(16.w);
-    if (isTablet(context)) return EdgeInsets.all(24.w);
-    return EdgeInsets.all(32.w);
+    if (kIsWeb) {
+      return const EdgeInsets.all(16);
+    }
+    if (isMobile(context)) return const EdgeInsets.all(16);
+    if (isTablet(context)) return const EdgeInsets.all(24);
+    return const EdgeInsets.all(32);
   }
 
-  static double getResponsiveFontSize(double size) => size.sp;
+  static double getResponsiveFontSize(double size) => size;
   
-  static double getResponsiveHeight(double height) => height.h;
+  static double getResponsiveHeight(double height) => height;
   
-  static double getResponsiveWidth(double width) => width.w;
+  static double getResponsiveWidth(double width) => width;
+
+  static double getMaxWidth(BuildContext context) {
+    if (kIsWeb) {
+      final screenWidth = MediaQuery.of(context).size.width;
+      return screenWidth > 600 ? 600 : screenWidth;
+    }
+    return MediaQuery.of(context).size.width;
+  }
 }

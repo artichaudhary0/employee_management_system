@@ -17,7 +17,8 @@ class RoleBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: ResponsiveUtils.getResponsiveHeight(211),
+      width: double.infinity,
+      height: 211,
       decoration: const BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.only(
@@ -42,9 +43,10 @@ class RoleBottomSheet extends StatelessWidget {
               Navigator.pop(context);
             },
             child: Container(
-              height: ResponsiveUtils.getResponsiveHeight(52),
-              padding: EdgeInsets.symmetric(
-                horizontal: ResponsiveUtils.getResponsiveWidth(16),
+              width: double.infinity,
+              height: 52,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
               ),
               child: Row(
                 children: [

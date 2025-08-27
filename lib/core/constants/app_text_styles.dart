@@ -57,7 +57,7 @@ class AppTextStyles {
     fontFamily: "Roboto",
     fontWeight: FontWeight.w400,
     fontSize: 16.0,
-    height: 1.25, // 20px line height / 16px font size
+    height: 1.25,
     letterSpacing: 0.0,
     color: AppColors.text,
   );
@@ -67,7 +67,7 @@ class AppTextStyles {
     fontFamily: "Roboto",
     fontWeight: FontWeight.w400,
     fontSize: 16.0,
-    height: 1.25, // 20px line height / 16px font size
+    height: 1.25,
     letterSpacing: 0.0,
     color: AppColors.hint,
   );
@@ -106,7 +106,7 @@ class AppTextStyles {
     fontFamily: "Roboto",
     fontWeight: FontWeight.w400,
     fontSize: 16.0,
-    height: 1.25, // 20px / 16px = 1.25
+    height: 1.25,
     letterSpacing: 0.0,
     color: AppColors.text,
   );
